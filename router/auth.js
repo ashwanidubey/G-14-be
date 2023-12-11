@@ -1,8 +1,10 @@
 const express=require('express')
 const authrouter=express.Router();
-
-authrouter.get('/login',(req,res)=>{
-    res.send("hello i am login")
-})
+const {login,logout,signup}
+            =require('../function/auth')
+const {isValidCred}=require('../middleware/isValidCred')
+authrouter.post('/login',login)
+authrouter.get('/logout',logout)
+authrouter.post('/signup',isValidCred,signup)
 
 module.exports={authrouter}
